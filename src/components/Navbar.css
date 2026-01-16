@@ -1,0 +1,100 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+  align-items: center;
+  padding: 1.5rem 10%;
+  background-color: #1a1a1a; /* O el color oscuro que prefieras */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  /* Efecto Glassmorphism (Vidrio) */
+  background: rgba(255, 255, 255, 0.05); /* Transparente */
+  backdrop-filter: blur(10px); /* El efecto borroso detrás */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Para que se quede pegado arriba */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box; /* Evita que el padding rompa el ancho */
+}
+
+.nav-links {
+  display: flex; /* Esto los pone uno al lado del otro */
+  list-style: none; /* Esto quita los puntos de la lista */
+  gap: 2rem; /* Espacio entre cada link */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none; /* Quita el subrayado */
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #646cff; /* El color de acento que elegimos antes */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #646cff; /* Un color de acento (morado vite) */
+}
+
+/* Escritorio: Ocultar icono de hamburguesa */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Mobile: Ajustes de navegación */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Mostrar hamburguesa */
+    z-index: 1001;
+  }
+
+  .nav-links {
+    position: fixed;
+    right: -100%; /* Escondido a la derecha */
+    top: 0;
+    width: 70%;
+    height: 100vh;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    gap: 2rem;
+    box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+  }
+
+  .nav-links.active {
+    right: 0; /* Aparece al activarse */
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+  }
+}

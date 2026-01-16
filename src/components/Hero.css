@@ -1,0 +1,79 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 80vh; /* Para que ocupe casi toda la pantalla */
+  text-align: left; /* El texto vuelve a la izquierda para un look profesional */
+}
+
+.hero-content {
+  flex: 1; /* Toma el 50% del espacio */
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #646cff; /* Color de acento */
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.hero-image {
+  flex: 1; /* Toma el otro 50% */
+  display: flex;
+  justify-content: center;
+}
+
+.image-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, #646cff, #42b883);
+  border-radius: 30px; /* Bordes redondeados modernos */
+  rotate: 5deg; /* Un pequeño toque de diseño */
+}
+
+.btn-primary {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: #646cff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+}
+
+.profile-pic {
+  width: 320px;
+  height: 320px;
+  object-fit: cover; /* Esto evita que la imagen se estire feo */
+  border-radius: 50%; /* La hace circular */
+  border: 4px solid #646cff; /* Un borde sutil del color de acento */
+  box-shadow: 0 0 30px rgba(100, 108, 255, 0.3); /* Un brillo suave alrededor */
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05); /* Se agranda un poquito al pasar el mouse */
+}
+
+/* Responsivo: Si la pantalla es pequeña, se pone uno debajo de otro */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+  }
+}

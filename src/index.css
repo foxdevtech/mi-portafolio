@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Esto hace que el padding no sume ancho extra */
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Corta cualquier cosa que se salga */
+  position: relative;
+}
+

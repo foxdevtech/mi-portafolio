@@ -1,0 +1,31 @@
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: #646cff;
+}
+
+.tag {
+  background: #646cff33;
+  color: #646cff;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-right: 8px;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #42b883;
+  text-decoration: none;
+  font-weight: bold;
+}
