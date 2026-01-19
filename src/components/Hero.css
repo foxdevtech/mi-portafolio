@@ -3,21 +3,24 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  min-height: 80vh; 
-  text-align: left; 
+  min-height: 80vh;
+  text-align: left;
+  flex-wrap: wrap;
+  padding-top: 64px; /* espacio para el navbar fijo */
 }
 
 .hero-content {
-  flex: 1; 
+  flex: 1;
 }
 
 .title {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+  scroll-margin-top: 64px; /* evita que los anchors lo cubran */
 }
 
 .highlight {
-  color: #646cff; 
+  color: #646cff;
 }
 
 .subtitle {
@@ -27,9 +30,12 @@
 }
 
 .hero-image {
-  flex: 1; 
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
 }
 
 .image-placeholder {
@@ -37,7 +43,7 @@
   height: 300px;
   background: linear-gradient(45deg, #646cff, #42b883);
   border-radius: 30px;
-  rotate: 5deg; 
+  transform: rotate(5deg);
 }
 
 .btn-primary {
@@ -56,17 +62,19 @@
 }
 
 .profile-pic {
-  width: 320px;
-  height: 320px;
-  object-fit: cover; 
-  border-radius: 50%; 
-  border: 4px solid #646cff; 
-  box-shadow: 0 0 30px rgba(100, 108, 255, 0.3); 
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1; /* fuerza proporción cuadrada */
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #646cff;
+  box-shadow: 0 0 30px rgba(100, 108, 255, 0.3);
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .profile-pic:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 .btn-download {
@@ -75,7 +83,7 @@
   gap: 10px;
   padding: 12px 24px;
   background-color: transparent;
-  color: #646cff; 
+  color: #646cff;
   border: 2px solid #646cff;
   border-radius: 8px;
   text-decoration: none;
@@ -92,32 +100,52 @@
 }
 
 .hero-buttons {
-  display: flex;       
-  gap: 1.5rem;         
-  margin-top: 2rem;   
-  justify-content: flex-start; 
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: flex-start;
+}
 
+/* Desktop -> keep text left, image right */
+@media (min-width: 901px) {
+  .hero-content { text-align: left; }
+}
 
-@media (max-width: 600px) {
-  .hero-buttons {
-    flex-direction: column; 
-    align-items: center;    
-    gap: 1rem;          
+/* Tablet and below: stack content, image below text */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
   }
-  
-  .btn-primary, .btn-download {
-    width: 100%;          
-    max-width: 300px;   
+
+  .hero-content {
+    width: 100%;
     text-align: center;
-    justify-content: center;
+  }
+
+  .hero-image {
+    order: 2;
+    margin-top: 1.5rem;
+    max-width: 280px;
+  }
+
+  .title {
+    font-size: 2.2rem;
   }
 }
 
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding-top: 100px;
-    }
+@media (max-width: 600px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary, .btn-download {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    justify-content: center;
   }
 }
