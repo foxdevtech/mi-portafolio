@@ -1,42 +1,81 @@
-import { motion } from 'framer-motion'; // <--- Importamos motion
-import ProjectCard from './ProjectCard';
+import { useState } from 'react';
 import './Projects.css';
 
-function Projects() {
-  const myProjects = [
-    { title: "E-commerce App", description: "Tienda online con React.", tags: ["React", "Firebase"], link: "#" },
-    { title: "Task Manager", description: "Gestión de tareas.", tags: ["JS", "CSS"], link: "#" },
-    { title: "Portfolio", description: "Mi sitio actual.", tags: ["Vite", "Motion"], link: "#" }
-  ];
+const myProjects = [
+  { 
+    id: 1, 
+    title: "E-commerce App", 
+    image: "https://via.placeholder.com/400x250",
+    description: "Tienda en linea .",
+    tech: ["React", "Firebase"]
+  },
+  { 
+    id: 2, 
+    title: "Portfolio", 
+    image: "https://via.placeholder.com/400x250", 
+    description: "Mi portafolio personal hecho con Vite.",
+    tech: ["React", "Framer Motion"]
+  },
+  { 
+    id: 3, 
+    title: "CitaMe", 
+    image: "https://via.placeholder.com/400x250", 
+    description: "App para gestionar citas medicas.",
+    tech: ["React", "Laravel", "MySQL", "Node.js"]
+  },
+  { 
+    id: 4, 
+    title: "DeliveryApp", 
+    image: "https://via.placeholder.com/400x250", 
+    description: "App para gestionar pedidos a domicilio.",
+    tech: ["Flutter", "Strapi", "MySQL", "Node.js"]
+  },
+];
+
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <section id="projects" className="projects-section">
-      {/* 1. Animamos el título para que baje suavemente */}
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="section-title"
-      >
-        Mis Proyectos
-      </motion.h2>
-
+      <h2 className="section-title">Mis Proyectos</h2>
+      
       <div className="projects-grid">
-        {myProjects.map((project, index) => (
-          /* 2. Envolvemos cada tarjeta en un componente de motion */
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }} // Empieza invisible y abajo
-            whileInView={{ opacity: 1, y: 0 }} // Al hacer scroll, sube y aparece
-            transition={{ duration: 0.5, delay: index * 0.2 }} // Efecto cascada
-            viewport={{ once: true }} // Solo se anima la primera vez que lo ves
+        {myProjects && myProjects.map((project) => (
+          <div 
+            key={project.id} 
+            className="project-card" 
+            onClick={() => setSelectedProject(project)}
           >
-            <ProjectCard {...project} />
-          </motion.div>
+            <div className="project-image-container">
+              <img src={project.image} alt={project.title} />
+              <div className="project-overlay">
+                <button className="view-details-btn">Ver Detalles</button>
+              </div>
+            </div>
+            <div className="project-info">
+              <h3>{project.title}</h3>
+            </div>
+          </div>
         ))}
       </div>
-    </section>
-  )
-}
 
-export default Projects;
+      {selectedProject && (
+        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={() => setSelectedProject(null)}>&times;</button>
+            <img src={selectedProject.image} alt={selectedProject.title} className="modal-hero-img" />
+            <div className="modal-details">
+              <h2>{selectedProject.title}</h2>
+              <p>{selectedProject.description}</p>
+              <div className="modal-tech-stack">
+                {selectedProject.tech.map((t) => (
+                  <span key={t} className="tech-pill">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}

@@ -9,7 +9,17 @@ function Hero() {
       <div className="hero-content">
         <h1 className="title">Hola, soy <span className="highlight">Julio Cesar Hernández Duran</span></h1>
         <p className="subtitle">Desarrollador Full Stack especializado en experiencias digitales modernas.</p>
-        <button className="btn-primary">Ver mis proyectos</button>
+        <div className="hero-buttons">
+          <a href="#projects" className="btn-primary">Ver mis proyectos</a>
+          
+          <a 
+            href="/CV_Julio_Hernandez.pdf" 
+            download="CV_Julio_Cesar_Hernandez.pdf" 
+            className="btn-download"
+          >
+            Descargar CV
+          </a>
+        </div>
       </div>
       
       <div className="hero-image">
